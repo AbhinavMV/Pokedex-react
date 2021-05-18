@@ -1,16 +1,15 @@
-import { useSelector } from 'react-redux';
-import './App.css';
-import Counter from './ComponentsOne/Counter';
+//libraries
+import {Route,Switch} from 'react-router-dom';
+//files
+import Pokemon from './Containers/Pokemon';
+import Pokedex from './Containers/Pokedex';
+
 function App() {
-
-  const count = useSelector((state) => state.counter.count)
-
   return (
-    <div className="App">
-      <h2>Counter Application</h2>
-      <h4> Count: {count} </h4>
-      <Counter/>
-    </div>
+    <Switch>
+      <Route exact path='/' component={Pokedex}/>
+      <Route exact path='/pokemon/:id' component={Pokemon}/>
+    </Switch>
   );
 }
 
