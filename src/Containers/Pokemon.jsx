@@ -25,7 +25,9 @@ const Pokemon = (props) =>{
         axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
         .then((response)=>{
             // console.log(response)
+            
             const {name,weight,types,height} = response.data
+            // console.log(response);
             const url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
             setPokeData({
                 'name':name,
