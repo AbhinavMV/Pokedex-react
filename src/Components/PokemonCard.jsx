@@ -27,8 +27,8 @@ export default function PokemonCard({name,id,url,history}) {
   // const classes = useStyles();
 
   return (
-    <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-        <Card style={{minHeight:300,minWidth:300}} >
+    <Grid item xs={12} sm={6} md={4} lg={2} >
+        <Card style={{minHeight:250,minWidth:250}} >
             <CardActionArea onClick={()=>(history.push(`/pokemon/${id}`))}>
                 <CardMedia
                 // className={classes.Media}

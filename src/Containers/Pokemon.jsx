@@ -2,6 +2,7 @@ import { makeStyles, Paper, Typography } from "@material-ui/core"
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import { capitalise } from "../utils/Capitalise";
 const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -30,7 +31,7 @@ const Pokemon = (props) =>{
             // console.log(response);
             const url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
             setPokeData({
-                'name':name,
+                'name':capitalise(name),
                 'weight':weight,
                 'height':height,
                 'url':url,
@@ -54,21 +55,21 @@ const Pokemon = (props) =>{
     return(
         <>
         <div className={classes.root}>
-            <Paper elevation={3} >
-            {
-            pokeData &&
-            <>
-               <Typography variant='h1'>{`${id}.${pokeData['name']}`}</Typography>    
-                <img src={pokeData['url']} height='500' width='500' alt='Not Found'/>
-                <Typography variant='h5'>{`Weight - ${pokeData['weight']}`}</Typography>
-                <Typography variant='h5'>{`Height - ${pokeData['height']}`}</Typography>
-                {`Types- ${
-                showPokemonType(pokeData['types']).map((type,index)=>( 
-                    type
-                    ))
-                }`}
-            </>
-            }
+            <Paper elevation={3} style={{width:'100%'}}>
+                {
+                pokeData &&
+                <div style={{margin:'auto',width:'100%',alignItems:'center',display:'flex',flexDirection:'column'}}>
+                    <Typography variant='h1' align='center'>{`${id}.${pokeData['name']}`}</Typography>    
+                    <img src={pokeData['url']} height='500' width='500' alt='Not Found' />
+                    <Typography variant='h5' align='center'>{`Weight - ${pokeData['weight']}`}</Typography>
+                    <Typography variant='h5' align='center'>{`Height - ${pokeData['height']}`}</Typography>
+                    {`Types- ${
+                    showPokemonType(pokeData['types']).map((type,index)=>( 
+                        type
+                        ))
+                    }`}
+                </div>
+                }
             </Paper>
         </div> 
         </>
